@@ -52,7 +52,7 @@ public class frmLogin extends JFrame{
         lblUrl.reshape(20, 20, 50, 20);
         txtUrl.reshape(55, 20, 450, 20);
         cmbTipos.reshape(530, 20, 250, 20);
-        txaResultado.reshape(55, 100, 450, 300);
+        txaResultado.reshape(20, 200, 750, 450);
         btnEnviar.reshape(20, 75, 90, 60);
 
         //addicionamos eventos a los botones
