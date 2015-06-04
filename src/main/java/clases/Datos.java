@@ -22,7 +22,7 @@ public class Datos {
     private Usuario MisUsuarios[] = new Usuario[0];
 
     public Datos(){
-
+        
     }
     public boolean validarUsuario(String usuario, String clave){
         if (usuario.equalsIgnoreCase("mario") && clave.equals("123456")){
