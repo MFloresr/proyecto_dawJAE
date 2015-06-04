@@ -1,6 +1,7 @@
 package formularios;
 
 import clases.Datos;
+import clases.GETP;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,14 +14,14 @@ public class frmLogin extends JFrame{
     private JComboBox cmbTipos;
     private JButton btnEnviar;
     private JTextArea txaResultado;
-
+    private String[] Metodos = {"POST","GET","DELETE","UPDATE"};
 
    //constructor
     public frmLogin(){
         //propiedades del formulario
         setTitle("Conexion con la Api");
         setResizable(false);
-        setSize(800,700);
+        setSize(800,600);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -31,9 +32,12 @@ public class frmLogin extends JFrame{
         // creamos objetos del formulario
         lblUrl = new JLabel("URL :");
         txtUrl = new JTextField();
-        cmbTipos = new JComboBox();
+        cmbTipos = new JComboBox(Metodos);
         btnEnviar = new JButton("Enviar",icoAceptar);
         txaResultado = new JTextArea();
+
+        //
+        cmbTipos.setSelectedIndex(1);
 
         // definimos propiedades de los objetos
         btnEnviar.setHorizontalTextPosition(SwingConstants.HORIZONTAL);
@@ -52,15 +56,25 @@ public class frmLogin extends JFrame{
         lblUrl.reshape(20, 20, 50, 20);
         txtUrl.reshape(55, 20, 450, 20);
         cmbTipos.reshape(530, 20, 250, 20);
-        txaResultado.reshape(20, 200, 750, 450);
+        txaResultado.reshape(20, 200, 750, 350);
         btnEnviar.reshape(20, 75, 90, 60);
 
         //addicionamos eventos a los botones
-/*        btnEnviar.addActionListener(new ActionListener() {
+        btnEnviar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                btnAceptaractionPerformed(e);
+                GETP accion = new GETP();
+                String r = "";
+                try {
+                    r = accion.sendGet(txtUrl.getText(), cmbTipos.getSelectedItem().toString());
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+                System.out.println(" Aqui esta el texto  "+txtUrl.getText() + "  " + cmbTipos.getSelectedItem().toString() + "\n " + r);
+                txaResultado.setText(r);
+                txaResultado.disable();
             }
-        });*/
+        });
 
    }
 
