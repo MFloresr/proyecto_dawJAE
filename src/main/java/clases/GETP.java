@@ -1,8 +1,10 @@
 package clases;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 
@@ -21,11 +23,33 @@ public class GETP {
         this.httpMetodo = httpMetodo;
     }*/
     public String sendGet(String url, String httpMetodo) throws Exception {
+        /*try{
+            obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            con.setRequestMethod(httpMetodo);
+            con.setRequestProperty("Accept", "application/json");
+            if (con.getResponseCode() != 200){
+                throw new RuntimeException("Failed : HTTP error code : " + con .getResponseCode());
+            }
+            BufferedReader in = new BufferedReader(new InputStreamReader((con.getInputStream())));
+            String inputLine;
+            System.out.println("Output from Server .... \n");
+            while ((inputLine = in.readLine()) != null) {
+                System.out.println(inputLine);
+                return inputLine;
+            }
+            con.disconnect();
+        } catch (MalformedURLException e){
+            e.printStackTrace();
+        } catch (IOException e){
+            e.printStackTrace();
+        }*/
 
         //String url = "http://www.google.com/search?q=mkyong";
 
         //String url = "http://192.168.1.43:3000/productos/555f3dc0d9af4acb49f87d9d";
         //String url = "http://192.168.15.84:3000/categorias";
+
         obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 

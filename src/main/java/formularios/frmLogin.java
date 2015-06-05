@@ -11,6 +11,10 @@ public class frmLogin extends JFrame{
     //objetos
     private JLabel lblUrl;
     private JTextField txtUrl;
+    private JLabel lblUsuari;
+    private JTextField txtUsuari;
+    private JLabel lblPass;
+    private JPasswordField txtPas;
     private JComboBox cmbTipos;
     private JButton btnEnviar;
     private JTextArea txaResultado;
@@ -65,7 +69,7 @@ public class frmLogin extends JFrame{
                 GETP accion = new GETP();
                 String r = "";
                 try {
-                    r = accion.sendGet(txtUrl.getText(), cmbTipos.getSelectedItem().toString());
+                    r = accion.sendGet(txtUrl.getText(), (String) cmbTipos.getSelectedItem());
                 } catch (Exception e1) {
                     e1.printStackTrace();
                 }
